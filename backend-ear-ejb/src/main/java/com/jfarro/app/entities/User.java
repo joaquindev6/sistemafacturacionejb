@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_usuarios")
@@ -34,10 +36,14 @@ public class User implements Serializable {
     private String username;
     private String password;
 
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "users")
+    private List<Role> roles;
+
     @Embedded
     private UserHistory userHistory;
 
     public User() {
+        this.roles = new ArrayList<>();
         this.userHistory = new UserHistory();
     }
 
@@ -113,6 +119,22 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public UserHistory getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(UserHistory userHistory) {
+        this.userHistory = userHistory;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
@@ -125,6 +147,7 @@ public class User implements Serializable {
         sb.append(", email='").append(email).append('\'');
         sb.append(", username='").append(username).append('\'');
         sb.append(", password='").append(password).append('\'');
+        sb.append(", roles=").append(roles);
         sb.append(", userHistory=").append(userHistory);
         sb.append('}');
         return sb.toString();

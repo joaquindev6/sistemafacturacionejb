@@ -19,7 +19,7 @@ public class Category implements Serializable {
     private String code;
     private String name;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "categories")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "category")
     private List<Product> products;
 
     @Embedded

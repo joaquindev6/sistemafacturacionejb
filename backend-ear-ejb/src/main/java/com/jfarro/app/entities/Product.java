@@ -28,14 +28,15 @@ public class Product implements Serializable {
     @Column(name = "precio")
     private double price;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "products")
-    private List<Category> categories;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private Category category;
 
     @Embedded
     private UserHistory userHistory;
 
     public Product() {
-        this.categories = new ArrayList<>();
+        this.category = new Category();
         this.userHistory = new UserHistory();
     }
 
@@ -79,12 +80,12 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public UserHistory getUserHistory() {
@@ -103,7 +104,7 @@ public class Product implements Serializable {
         sb.append(", name='").append(name).append('\'');
         sb.append(", amount=").append(amount);
         sb.append(", price=").append(price);
-        sb.append(", categories=").append(categories);
+        sb.append(", categories=").append(category);
         sb.append(", userHistory=").append(userHistory);
         sb.append('}');
         return sb.toString();
