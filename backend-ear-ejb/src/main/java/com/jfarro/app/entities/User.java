@@ -3,7 +3,6 @@ package com.jfarro.app.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,8 @@ public class User implements Serializable {
     private String username;
     private String password;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @JoinTable(name = "tbl_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
     private List<Role> roles;
 
     @Embedded

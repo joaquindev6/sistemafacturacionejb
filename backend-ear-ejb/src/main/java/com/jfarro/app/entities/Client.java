@@ -38,7 +38,7 @@ public class Client implements Serializable {
     @Column(name = "direccion")
     private String direction;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne
     @JoinColumn(name = "id_tipo_documento")
     private DocumentType documentType;
 
