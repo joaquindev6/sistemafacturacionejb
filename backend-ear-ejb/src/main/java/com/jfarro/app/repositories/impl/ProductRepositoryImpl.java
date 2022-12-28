@@ -1,14 +1,14 @@
 package com.jfarro.app.repositories.impl;
 
-import com.jfarro.app.annotations.Repository;
 import com.jfarro.app.entities.Product;
 import com.jfarro.app.repositories.ProductRepository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-@Repository
+@RequestScoped
 public class ProductRepositoryImpl implements ProductRepository {
 
     @Inject

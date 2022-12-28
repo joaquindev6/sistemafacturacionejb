@@ -1,17 +1,17 @@
 package com.jfarro.app.services.impl;
 
-import com.jfarro.app.annotations.Service;
 import com.jfarro.app.entities.Client;
 import com.jfarro.app.entities.DocumentType;
 import com.jfarro.app.repositories.ClientRepository;
 import com.jfarro.app.repositories.DocumentTypeRepository;
 import com.jfarro.app.services.ClientService;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Stateless //Debe ser este tipo de anotacion porque si creamos una anotacion no lo reconoce como una anotacion del beans
 public class ClientServiceImpl implements ClientService {
 
     @Inject

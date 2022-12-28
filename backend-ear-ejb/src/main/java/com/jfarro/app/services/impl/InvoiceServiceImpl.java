@@ -1,17 +1,17 @@
 package com.jfarro.app.services.impl;
 
-import com.jfarro.app.annotations.Service;
 import com.jfarro.app.entities.DetailInvoice;
 import com.jfarro.app.entities.Invoice;
 import com.jfarro.app.repositories.DetailInvoiceRepository;
 import com.jfarro.app.repositories.InvoiceRepository;
 import com.jfarro.app.services.InvoiceService;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Stateless
 public class InvoiceServiceImpl implements InvoiceService {
 
     @Inject

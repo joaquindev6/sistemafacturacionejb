@@ -1,14 +1,14 @@
 package com.jfarro.app.repositories.impl;
 
-import com.jfarro.app.annotations.Repository;
 import com.jfarro.app.entities.DocumentType;
 import com.jfarro.app.repositories.DocumentTypeRepository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-@Repository
+@RequestScoped
 public class DocumentTypeRepositoryImpl implements DocumentTypeRepository {
 
     @Inject

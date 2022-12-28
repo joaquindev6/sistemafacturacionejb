@@ -1,17 +1,17 @@
 package com.jfarro.app.services.impl;
 
-import com.jfarro.app.annotations.Service;
 import com.jfarro.app.entities.Category;
 import com.jfarro.app.entities.Product;
 import com.jfarro.app.repositories.CategoryRepository;
 import com.jfarro.app.repositories.ProductRepository;
 import com.jfarro.app.services.ProductService;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Stateless
 public class ProductServiceImpl implements ProductService {
 
     @Inject

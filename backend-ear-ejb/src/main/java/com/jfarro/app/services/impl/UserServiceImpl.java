@@ -1,17 +1,17 @@
 package com.jfarro.app.services.impl;
 
-import com.jfarro.app.annotations.Service;
 import com.jfarro.app.entities.Role;
 import com.jfarro.app.entities.User;
 import com.jfarro.app.repositories.RoleRepository;
 import com.jfarro.app.repositories.UserRepository;
 import com.jfarro.app.services.UserService;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Stateless
 public class UserServiceImpl implements UserService {
 
     @Inject

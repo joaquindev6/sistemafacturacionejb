@@ -35,8 +35,9 @@ public class User implements Serializable {
     private String username;
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    @JoinTable(name = "tbl_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"))
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "tbl_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"),
+    uniqueConstraints = @UniqueConstraint(columnNames = {"id_rol"}))
     private List<Role> roles;
 
     @Embedded

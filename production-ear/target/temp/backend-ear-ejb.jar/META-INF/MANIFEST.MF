@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Created-By: Maven EJB Plugin 3.1.0
 Build-Jdk-Spec: 11
-Class-Path: 
+Class-Path: org.junit.jupiter-junit-jupiter-5.9.0.jar org.junit.jupiter-
+ junit-jupiter-api-5.9.0.jar org.opentest4j-opentest4j-1.2.0.jar org.jun
+ it.platform-junit-platform-commons-1.9.0.jar org.apiguardian-apiguardia
+ n-api-1.1.2.jar org.junit.jupiter-junit-jupiter-params-5.9.0.jar org.ju
+ nit.jupiter-junit-jupiter-engine-5.9.0.jar org.junit.platform-junit-pla
+ tform-engine-1.9.0.jar
 

@@ -22,11 +22,7 @@ public class Role implements Serializable {
     @Column(name = "descripcion")
     private String description;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "roles")
-    private List<User> users;
-
     public Role() {
-        this.users = new ArrayList<>();
     }
 
     public Long getId() {
@@ -51,14 +47,6 @@ public class Role implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
     }
 
     @Override

@@ -1,14 +1,14 @@
 package com.jfarro.app.repositories.impl;
 
-import com.jfarro.app.annotations.Repository;
 import com.jfarro.app.entities.DetailInvoice;
 import com.jfarro.app.repositories.DetailInvoiceRepository;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
-@Repository
+@RequestScoped
 public class DetailInvoiceRepositoryImpl implements DetailInvoiceRepository {
 
     @Inject
