@@ -3,8 +3,6 @@ package com.jfarro.app.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "tbl_roles")

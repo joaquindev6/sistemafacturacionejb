@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class UserHistory {
 
     @Column(name = "estado")
-    private int state;
+    private byte state;
 
     @Column(name = "fecha_reg")
     private LocalDate dateReg;
@@ -27,6 +27,7 @@ public class UserHistory {
 
     @PrePersist
     public void prePersist() {
+        this.state = 1; //Estado activo
         this.dateReg = LocalDate.now();
     }
 
@@ -35,11 +36,11 @@ public class UserHistory {
         this.dateMod = LocalDate.now();
     }
 
-    public int getState() {
+    public byte getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(byte state) {
         this.state = state;
     }
 

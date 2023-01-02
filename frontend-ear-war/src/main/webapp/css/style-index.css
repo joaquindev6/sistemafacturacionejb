@@ -1,0 +1,15 @@
+/* Mensaje de bienvenida */
+.content {
+    overflow-y: auto;
+    height: 100vh;
+    padding-bottom: 80px;
+}
+
+.content .row {
+    display: flex;
+    align-items: center;
+}
+
+.stat {
+    border-right: 1px solid rgb(201, 193, 193);
+}

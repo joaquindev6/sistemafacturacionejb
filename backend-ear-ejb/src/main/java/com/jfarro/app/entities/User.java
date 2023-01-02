@@ -37,7 +37,7 @@ public class User implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "tbl_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"),
-    uniqueConstraints = @UniqueConstraint(columnNames = {"id_rol"}))
+    uniqueConstraints = @UniqueConstraint(columnNames = {"id_usuario", "id_rol"}))
     private List<Role> roles;
 
     @Embedded

@@ -1,0 +1,63 @@
+body {
+    overflow: hidden;
+}
+
+/* Menu vertical */
+.fondo-menu {
+    background: #201986;
+}
+
+#siledabar-container {
+    width: 230px;
+    min-height: 100vh;
+}
+
+#siledabar-container .logo {
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 45px;
+}
+
+#siledabar-container .logo h4 {
+    color: white;
+}
+
+.menu-lista {
+    list-style-type: none;
+}
+
+.menu-lista .nav-item {
+    margin-left: 10px;
+    margin-bottom: 40px;
+}
+
+.menu-lista .nav-link {
+    color: white;
+}
+
+.menu-lista .nav-link:hover {
+    color: #BBBAC5;
+}
+
+.menu-lista .nav-link i {
+    width: 20px;
+}
+
+.menu-lista .dropdown-item:active {
+    background: #7d7d86;
+}
+
+/* Menu horizontal  */
+.navbar .nav-item a {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-item i {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.seccion-title .links a {
+    text-decoration: none;
+}

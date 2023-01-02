@@ -26,25 +26,25 @@ public class CodeFormating {
 
     public String userCode() {
         List<User> users = this.userService.findAllUsers();
-        long idFinal = users.get(users.size() - 1).getId();
+        long idFinal = users.get(users.size() - 1).getId() + 1;
         return "USU-" + String.format("%6d", idFinal).replace(" ", "0");
     }
 
     public String clientCode() {
         List<Client> clients = this.clientService.findAllClients();
-        long idFinal = clients.get(clients.size() - 1).getId();
+        long idFinal = clients.get(clients.size() - 1).getId() + 1;
         return "CLI-" + String.format("%6d", idFinal).replace(" ", "0");
     }
 
     public String productCode() {
         List<Product> products = this.productService.findAllProducts();
-        long idFinal = products.get(products.size() - 1).getId();
+        long idFinal = products.get(products.size() - 1).getId() + 1;
         return "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
     }
 
     public String categoryProductCode() {
         List<Category> categories = this.productService.findAllCategories();
-        long idFinal = categories.get(categories.size() - 1).getId();
+        long idFinal = categories.get(categories.size() - 1).getId() + 1;
         return "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
     }
 }

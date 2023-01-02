@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style-menu.css">
+    <link rel="stylesheet" href="css/style-index.css">
+    <script src="https://kit.fontawesome.com/82ec21a6d1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="d-flex">
+        <div id="siledabar-container" class="fondo-menu">
+            <div class="logo">
+                <h4>System FAC</h4>
+            </div>
+            <div class="menu">
+                <ul class="menu-lista">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html"><i class="fa-solid fa-house me-2"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user me-2"></i>Usuarios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/usuarios">Usuarios</a></li>
+                            <li><a class="dropdown-item" href="usuario-roles.html">Roles</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa-solid fa-users me-2"></i>Clientes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-cart-flatbed me-2"></i>Inventario
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="productos.html">Productos</a></li>
+                            <li><a class="dropdown-item" href="producto-categorias.html">Categorías</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-cart-shopping me-2"></i>Ventas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="facturacion.html">Facturar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <nav class="navbar navbar-expand-lg border-bottom">
+                <div class="container-fluid">
+                    <div class="navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    JOAQUIN FARRO
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content m-4">
+                <section>
+                    <div class="container-fluid">
+                        <div class="row mb-4">
+                            <div class="col-lg-9">
+                                <h1 class="fw-bold">Bienvenido Joaquin</h1>
+                                <p>Revisa la ultima informacion</p>
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="button" class="btn btn-primary w-75">Descargar reporte</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-3 d-flex stat">
+                                        <div class="mx-auto">
+                                            <h6 class="text-muted">Ingresos mensuales</h6>
+                                            <h3 class="fw-bold">S/5200</h3>
+                                            <h6 class="text-success">50.50%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 d-flex stat">
+                                        <div class="mx-auto">
+                                            <h6 class="text-muted">Ingresos mensuales</h6>
+                                            <h3 class="fw-bold">S/5200</h3>
+                                            <h6 class="text-success">50.50%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 d-flex stat">
+                                        <div class="mx-auto">
+                                            <h6 class="text-muted">Ingresos mensuales</h6>
+                                            <h3 class="fw-bold">S/5200</h3>
+                                            <h6 class="text-success">50.50%</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 d-flex">
+                                        <div class="mx-auto">
+                                            <h6 class="text-muted">Ingresos mensuales</h6>
+                                            <h3 class="fw-bold">S/5200</h3>
+                                            <h6 class="text-success">50.50%</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>    
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -37,15 +37,38 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void delete(Long id) {
-        User user = findById(id);
-        if (user != null) {
-            this.em.createQuery("UPDATE FROM User u SET u.userHistory.state = 0 WHERE u.id = ?1", User.class)
-                    .setParameter(1, user.getId());
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE User u SET u.userHistory.state = ?1 WHERE u.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
     }
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        User user;
+        try {
+            user = this.em.createQuery("SELECT u FROM User u WHERE u.username = ?1", User.class)
+                    .setParameter(1, username)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            user = null;
+        }
+        return user;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        User user;
+        try {
+            user = this.em.createQuery("SELECT u FROM User u WHERE u.email = ?1", User.class)
+                    .setParameter(1, email)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            user = null;
+        }
+        return user;
     }
 }
