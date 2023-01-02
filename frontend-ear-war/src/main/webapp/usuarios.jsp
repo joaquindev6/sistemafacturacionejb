@@ -217,18 +217,14 @@
                             <div class="row">
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Rol de usuario:</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="roles" value="1" <c:forEach items="${user.roles}" var="r"> ${r.id == 1 ? "checked" : ""} </c:forEach>/>
-                                        <label class="form-check-label">
-                                            ADMINISTRADOR
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="roles" value="2" <c:forEach items="${user.roles}" var="r"> ${r.id == 2 ? "checked" : ""} </c:forEach>/>
-                                        <label class="form-check-label">
-                                            USUARIO
-                                        </label>
-                                    </div>
+                                    <c:forEach items="${roles}" var="r">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="roles" value="${r.id}" <c:forEach items="${user.roles}" var="ru"> ${ru.id == r.id ? "checked" : ""} </c:forEach>/>
+                                            <label class="form-check-label">
+                                                ${r.description}
+                                            </label>
+                                        </div>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </div>

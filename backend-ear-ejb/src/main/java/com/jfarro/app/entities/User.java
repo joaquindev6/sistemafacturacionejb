@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String username;
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany //No agrego una cascada porque no quiero que la tabla roles se altere
     @JoinTable(name = "tbl_usuarios_roles", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_rol"),
     uniqueConstraints = @UniqueConstraint(columnNames = {"id_usuario", "id_rol"}))
     private List<Role> roles;
