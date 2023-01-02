@@ -20,6 +20,9 @@ public class Role implements Serializable {
     @Column(name = "descripcion")
     private String description;
 
+    @Embedded
+    private UserHistory userHistory;
+
     public Role() {
     }
 
@@ -45,6 +48,14 @@ public class Role implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public UserHistory getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(UserHistory userHistory) {
+        this.userHistory = userHistory;
     }
 
     @Override

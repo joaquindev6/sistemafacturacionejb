@@ -37,10 +37,25 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Override
     public void delete(Long id) {
-        Category category = findById(id);
-        if (category != null) {
-            this.em.createQuery("UPDATE FROM Category c SET c.userHistory.state = 0 WHERE c.id = ?1", Category.class)
-                    .setParameter(1, category.getId());
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE Category c SET c.userHistory.state = ?1 WHERE c.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
+    }
+
+    @Override
+    public Category findByName(String name) {
+        Category category;
+        try {
+            category = this.em.createQuery("SELECT c FROM Category c WHERE c.name = ?1", Category.class)
+                    .setParameter(1, name)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            category = null;
+        }
+        return category;
     }
 }

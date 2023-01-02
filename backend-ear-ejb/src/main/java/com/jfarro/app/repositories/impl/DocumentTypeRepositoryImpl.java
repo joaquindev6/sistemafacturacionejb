@@ -37,9 +37,12 @@ public class DocumentTypeRepositoryImpl implements DocumentTypeRepository {
 
     @Override
     public void delete(Long id) {
-        DocumentType documentType = findById(id);
-        if (documentType != null) {
-            this.em.remove(documentType);
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE DocumentType d SET d.userHistory.state = ?1 WHERE d.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
     }
 }

@@ -37,9 +37,25 @@ public class RoleRepositoryImpl implements RoleRepository {
 
     @Override
     public void delete(Long id) {
-        Role role = findById(id);
-        if (role != null) {
-            this.em.remove(role);
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE Role r SET r.userHistory.state = ?1 WHERE r.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
+    }
+
+    @Override
+    public Role findByName(String name) {
+        Role role;
+        try {
+            role = this.em.createQuery("SELECT r FROM Role r WHERE r.name = ?1", Role.class)
+                    .setParameter(1, name)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            role = null;
+        }
+        return role;
     }
 }

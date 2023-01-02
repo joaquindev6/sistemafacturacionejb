@@ -37,10 +37,38 @@ public class ClientRepositoryImpl implements ClientRepository {
 
     @Override
     public void delete(Long id) {
-        Client client = findById(id);
-        if (client != null) {
-            this.em.createQuery("UPDATE FROM Client c SET c.userHistory.state = 0 WHERE c.id = ?1", Client.class)
-                    .setParameter(1, client.getId());
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE Client c SET c.userHistory.state = ?1 WHERE c.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
+    }
+
+    @Override
+    public Client findByEmail(String email) {
+        Client client;
+        try {
+            client = this.em.createQuery("SELECT c FROM Client c WHERE c.email = ?1", Client.class)
+                    .setParameter(1, email)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            client = null;
+        }
+        return client;
+    }
+
+    @Override
+    public Client findByNroDoc(String nroDocu) {
+        Client client;
+        try {
+            client = this.em.createQuery("SELECT c FROM Client c WHERE c.nroDoc = ?1", Client.class)
+                    .setParameter(1, nroDocu)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            client = null;
+        }
+        return client;
     }
 }

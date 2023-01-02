@@ -37,10 +37,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public void delete(Long id) {
-        Product product = findById(id);
-        if (product != null) {
-            this.em.createQuery("UPDATE FROM Product p SET p.userHistory.state = 0 WHERE p.id = ?1", Product.class)
-                    .setParameter(1, product.getId());
+        if (id != null && id > 0) {
+            Byte state = 0;
+            this.em.createQuery("UPDATE Product p SET p.userHistory.state = ?1 WHERE p.id = ?2")
+                    .setParameter(1, state)
+                    .setParameter(2, id)
+                    .executeUpdate();
         }
     }
 }

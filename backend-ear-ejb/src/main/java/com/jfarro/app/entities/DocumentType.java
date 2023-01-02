@@ -20,6 +20,9 @@ public class DocumentType implements Serializable {
     @Column(name = "nombre")
     private String name;
 
+    @Embedded
+    private UserHistory userHistory;
+
     public DocumentType() {
     }
 
@@ -45,6 +48,14 @@ public class DocumentType implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UserHistory getUserHistory() {
+        return userHistory;
+    }
+
+    public void setUserHistory(UserHistory userHistory) {
+        this.userHistory = userHistory;
     }
 
     @Override
