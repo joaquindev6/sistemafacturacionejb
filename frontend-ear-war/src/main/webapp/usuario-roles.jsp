@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rol de Usuario</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style-menu.css">
-    <link rel="stylesheet" href="css/style-usurios.css">
-    <link rel="stylesheet" href="data-tables/datatables.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style-menu.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style-usurios.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/data-tables/datatables.min.css">
     <script src="https://kit.fontawesome.com/82ec21a6d1.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -28,8 +30,8 @@
                             <i class="fa-solid fa-user me-2"></i>Usuarios
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="usuarios.jsp">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="usuario-roles.html">Roles</a></li>
+                            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/usuarios">Usuarios</a></li>
+                            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/usuarios/roles">Roles</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -86,7 +88,7 @@
                     <div class="col-lg-9">
                         <h1>Roles de Usuario</h1>
                         <p class="links">
-                            <a href="index.html"><i class="fa-solid fa-house me-2"></i>Inicio</a> / <a href="usuarios.jsp">Usuarios</a> / Roles
+                            <a href="index.html"><i class="fa-solid fa-house me-2"></i>Inicio</a> / <a href="<%=request.getContextPath()%>/usuarios">Usuarios</a> / Roles
                         </p>
                     </div>
                 </div>
@@ -111,19 +113,23 @@
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach items="${roles}" var="r">
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>${r.id}</td>
+                                        <td>${r.name}</td>
+                                        <td>${r.description}</td>
+                                        <td>${r.userHistory.state == 1 ? "ACTIVO" : "INACTIVO"}</td>
                                         <td>
-                                            <a href="" class="btn btn-success">Editar</a>
-                                            <a href="" class="btn btn-danger">Eliminar</a>
+                                            <a href="<%=request.getContextPath()%>/usuarios/roles?id=${r.id}" class="btn btn-success">Editar</a>
+                                            <a href="<%=request.getContextPath()%>/usuarios/roles?idDelete=${r.id}" class="btn btn-danger">Eliminar</a>
                                         </td>
                                     </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -138,36 +144,55 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="">
+                <form action="<%=request.getContextPath()%>/usuarios/roles" method="post">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Rol de Usuario</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnClose"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-3">
+                                <c:if test="${!empty messages and !messages.containsKey('exito')}">
+                                    <div class="alert alert-danger" role="alert">
+                                        <c:forEach items="${messages.keySet()}" var="e">
+                                            <div>${messages.get(e)}</div>
+                                        </c:forEach>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-3">
                                 <label for="name" class="form-label">Nombre (ROL_):</label>
-                                <input type="text" class="form-control" id="name"/>
+                                <input type="text" class="form-control" id="name" name="name" value="${role.name != null ? role.name : ""}"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label for="description" class="form-label">Descripción:</label>
-                                <input type="text" class="form-control" id="description" />
+                                <input type="text" class="form-control" id="description" name="description" value="${role.description != null ? role.description : ""}"/>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Guardar</button>
+                        <input type="submit" class="btn btn-primary" value="Guardar"/>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.5.1.js"></script>
-    <script src="data-tables/datatables.min.js"></script>
-    <script src="js/table-pagination.js"></script>
+    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
+    <c:if test="${!empty messages and !messages.containsKey('exito') or role.id != null}">
+        <script>
+            $(function () {
+                $('#staticBackdrop').modal("show");
+            });
+        </script>
+    </c:if>
+    <script src="<%=request.getContextPath()%>/js/data-role.js"></script>
+    <script src="<%=request.getContextPath()%>/data-tables/datatables.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/table-pagination.js"></script>
 </body>
 </html>

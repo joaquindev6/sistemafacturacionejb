@@ -3,14 +3,14 @@ package com.jfarro.app.controllers;
 import com.jfarro.app.entities.Role;
 import com.jfarro.app.entities.User;
 import com.jfarro.app.services.UserService;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Stateless
+@RequestScoped
 public class UserController {
 
     @Inject
@@ -135,7 +135,6 @@ public class UserController {
                 userSave.getUserHistory().setUserReg("ADMIN".trim().toUpperCase());
             }
 
-            System.out.println("USER ***** " + userSave);
             this.userService.saveUser(userSave);
         }
         return messages;

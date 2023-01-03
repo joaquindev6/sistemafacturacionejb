@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style-menu.css">
-    <link rel="stylesheet" href="data-tables/datatables.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style-menu.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/data-tables/datatables.min.css">
     <script src="https://kit.fontawesome.com/82ec21a6d1.js" crossorigin="anonymous"></script>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#data">
@@ -30,7 +30,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<%=request.getContextPath()%>/usuarios">Usuarios</a></li>
-                            <li><a class="dropdown-item" href="usuario-roles.html">Roles</a></li>
+                            <li><a class="dropdown-item" href="<%=request.getContextPath()%>/usuarios/roles">Roles</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -218,12 +218,14 @@
                                 <div class="col-12 mb-3">
                                     <label class="form-label">Rol de usuario:</label>
                                     <c:forEach items="${roles}" var="r">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="roles" value="${r.id}" <c:forEach items="${user.roles}" var="ru"> ${ru.id == r.id ? "checked" : ""} </c:forEach>/>
-                                            <label class="form-check-label">
-                                                ${r.description}
-                                            </label>
-                                        </div>
+                                        <c:if test="${r.userHistory.state == 1}">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="roles" value="${r.id}" <c:forEach items="${user.roles}" var="ru"> ${ru.id == r.id ? "checked" : ""} </c:forEach>/>
+                                                <label class="form-check-label">
+                                                        ${r.description}
+                                                </label>
+                                            </div>
+                                        </c:if>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -236,8 +238,8 @@
             </div>
         </div>
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.5.1.js"></script>
+    <script src="<%=request.getContextPath()%>/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
     <c:if test="${!empty messages and !messages.containsKey('exito') or user.id != null}">
         <script>
             $(function () {
@@ -245,8 +247,8 @@
             });
         </script>
     </c:if>
-    <script src="js/user-data.js"></script>
-    <script src="data-tables/datatables.min.js"></script>
-    <script src="js/table-pagination.js"></script>
+    <script src="<%=request.getContextPath()%>/js/data-user.js"></script>
+    <script src="<%=request.getContextPath()%>/data-tables/datatables.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/table-pagination.js"></script>
 </body>
 </html>

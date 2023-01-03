@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -56,7 +55,6 @@ public class UserServlet extends HttpServlet {
                 req.getSession().setAttribute("userEdit", user);
             }
         } else {
-            req.getSession().removeAttribute("userEdit");
             code = this.codeFormating.userCode();
         }
 
@@ -121,6 +119,7 @@ public class UserServlet extends HttpServlet {
         Map<String, String> messages = this.userController.dataValidationController(user, rolesIds, null);
         if (messages.isEmpty()) {
             messages.put("exito", "Usuario guardado exitosamente");
+            req.getSession().removeAttribute("userEdit");
             req.getSession().setAttribute("messages", messages);
             resp.sendRedirect(req.getContextPath() + "/usuarios");
         } else {

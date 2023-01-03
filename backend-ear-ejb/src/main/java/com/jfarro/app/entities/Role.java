@@ -24,6 +24,7 @@ public class Role implements Serializable {
     private UserHistory userHistory;
 
     public Role() {
+        this.userHistory = new UserHistory();
     }
 
     public Long getId() {
