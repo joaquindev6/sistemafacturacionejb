@@ -57,6 +57,7 @@ public class UserServlet extends HttpServlet {
         } else {
             code = this.codeFormating.userCode();
         }
+        req.setAttribute("code", code);
 
         //Verifica si se selecciono el usuario a eliminar por id
         if (req.getParameter("idDelete") != null) {
@@ -70,8 +71,6 @@ public class UserServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/usuarios");
             return;
         }
-
-        req.setAttribute("code", code);
 
         //Muestra los mensajes y datos
         if (req.getSession().getAttribute("messages") != null) {

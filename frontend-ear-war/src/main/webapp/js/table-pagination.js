@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    $('#table').DataTable({    
+    $('#table').DataTable({
+        scrollX: true,
         language: {
             processing: "Traitement en cours...",
             search: "Buscar&nbsp;:",
@@ -21,6 +22,6 @@ $(document).ready(function () {
                 sortAscending: ": activer pour trier la colonne par ordre croissant",
                 sortDescending: ": activer pour trier la colonne par ordre décroissant"
             }
-        }    
+        }
     });
 });

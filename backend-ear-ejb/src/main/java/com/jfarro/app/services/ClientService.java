@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface ClientService {
     List<Client> findAllClients();
     Optional<Client> findByIdClient(Long id);
+    Optional<Client> findByEmailClient(String email);
+    Optional<Client> findByNroDocClient(String nroDocu);
     void saveClient(Client client);
     void deleteClient(Long id);
 

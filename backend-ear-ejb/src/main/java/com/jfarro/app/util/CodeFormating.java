@@ -25,26 +25,50 @@ public class CodeFormating {
     private ProductService productService;
 
     public String userCode() {
+        String code = "";
         List<User> users = this.userService.findAllUsers();
-        long idFinal = users.get(users.size() - 1).getId() + 1;
-        return "USU-" + String.format("%6d", idFinal).replace(" ", "0");
+        if (!users.isEmpty()) {
+            long idFinal = users.get(users.size() - 1).getId() + 1;
+            code = "USU-" + String.format("%6d", idFinal).replace(" ", "0");
+        } else {
+            code = "USU-000001";
+        }
+        return code;
     }
 
     public String clientCode() {
+        String code = "";
         List<Client> clients = this.clientService.findAllClients();
-        long idFinal = clients.get(clients.size() - 1).getId() + 1;
-        return "CLI-" + String.format("%6d", idFinal).replace(" ", "0");
+        if (!clients.isEmpty()) {
+            long idFinal = clients.get(clients.size() - 1).getId() + 1;
+            code = "CLI-" + String.format("%6d", idFinal).replace(" ", "0");
+        } else {
+            code = "CLI-000001";
+        }
+        return code;
     }
 
     public String productCode() {
+        String code = "";
         List<Product> products = this.productService.findAllProducts();
-        long idFinal = products.get(products.size() - 1).getId() + 1;
-        return "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
+        if (!products.isEmpty()) {
+            long idFinal = products.get(products.size() - 1).getId() + 1;
+            code = "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
+        } else {
+            code = "PRO-000001";
+        }
+        return code;
     }
 
     public String categoryProductCode() {
+        String code = "";
         List<Category> categories = this.productService.findAllCategories();
-        long idFinal = categories.get(categories.size() - 1).getId() + 1;
-        return "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
+        if (!categories.isEmpty()) {
+            long idFinal = categories.get(categories.size() - 1).getId() + 1;
+            code = "PRO-" + String.format("%6d", idFinal).replace(" ", "0");
+        } else {
+            code = "CAT-000001";
+        }
+        return code;
     }
 }

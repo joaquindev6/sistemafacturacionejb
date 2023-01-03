@@ -111,12 +111,11 @@ public class UserController {
             userSave.setApeMat(user.getApeMat().trim().toUpperCase());
             userSave.setPhone(user.getPhone().trim().toUpperCase());
             userSave.setEmail(user.getEmail().trim().toUpperCase());
-            userSave.setUsername(user.getUsername());
-            userSave.setPassword(user.getPassword());
+            userSave.setUsername(user.getUsername().trim());
+            userSave.setPassword(user.getPassword().trim());
 
             for (String ids: rolesIds) {
                 long idRol = Long.parseLong(ids);
-                System.out.println("roles******************: " + idRol);
                 Optional<Role> optionalRole = this.userService.findByIdRole(idRol);
                 optionalRole.ifPresent(role -> userSave.getRoles().add(role));
             }

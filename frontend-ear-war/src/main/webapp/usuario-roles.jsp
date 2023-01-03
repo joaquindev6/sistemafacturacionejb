@@ -35,7 +35,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="clientes.html"><i class="fa-solid fa-users me-2"></i>Clientes</a>
+                        <a class="nav-link" href="clientes.jsp"><i class="fa-solid fa-users me-2"></i>Clientes</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
