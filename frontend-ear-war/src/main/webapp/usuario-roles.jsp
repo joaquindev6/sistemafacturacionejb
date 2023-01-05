@@ -43,8 +43,8 @@
                             <i class="fa-solid fa-cart-flatbed me-2"></i>Inventario
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="productos.html">Productos</a></li>
-                            <li><a class="dropdown-item" href="producto-categorias.html">Categorías</a></li>
+                            <li><a class="dropdown-item" href="productos.jsp">Productos</a></li>
+                            <li><a class="dropdown-item" href="producto-categorias.jsp">Categorías</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

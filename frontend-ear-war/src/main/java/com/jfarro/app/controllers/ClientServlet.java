@@ -127,7 +127,6 @@ public class ClientServlet extends HttpServlet {
         Map<String, String> messages = this.clientController.dataValidationController(client, null);
         if (messages.isEmpty()) {
             messages.put("exito", "Cliente guardado exitosamente");
-            req.getSession().removeAttribute("clientEdit");
             req.getSession().setAttribute("messages", messages);
             resp.sendRedirect(req.getContextPath() + "/clientes");
         } else {
